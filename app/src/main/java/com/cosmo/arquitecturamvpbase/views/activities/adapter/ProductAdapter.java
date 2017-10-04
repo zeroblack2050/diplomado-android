@@ -1,4 +1,4 @@
-package com.cosmo.arquitecturamvpbase.views.adapter;
+package com.cosmo.arquitecturamvpbase.views.activities.adapter;
 
 import android.app.Activity;
 import android.content.Context;

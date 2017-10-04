@@ -28,7 +28,6 @@ public class BaseActivity<T extends BasePresenter> extends AppCompatActivity imp
         super.onCreate(savedInstanceState);
         validateInternet = new ValidateInternet(BaseActivity.this);
         this.showAlertDialog = new ShowAlertDialog(this);
-
     }
 
     public ShowAlertDialog getShowAlertDialog() {

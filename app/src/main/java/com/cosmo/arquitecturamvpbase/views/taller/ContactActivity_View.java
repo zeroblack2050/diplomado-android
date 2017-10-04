@@ -1,11 +1,12 @@
-package com.cosmo.arquitecturamvpbase.views.activities;
+package com.cosmo.arquitecturamvpbase.views.taller;
 
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.widget.ContentLoadingProgressBar;
+import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
@@ -13,28 +14,23 @@ import android.widget.ListView;
 import com.cosmo.arquitecturamvpbase.R;
 import com.cosmo.arquitecturamvpbase.helper.Constants;
 import com.cosmo.arquitecturamvpbase.model.Product;
+import com.cosmo.arquitecturamvpbase.model.taller_model.Contact_Model;
 import com.cosmo.arquitecturamvpbase.presenter.ProductPresenter;
+import com.cosmo.arquitecturamvpbase.presenter.taller_presenter.Contact_Presenter;
 import com.cosmo.arquitecturamvpbase.views.BaseActivity;
+import com.cosmo.arquitecturamvpbase.views.activities.CreateProductActivity;
+import com.cosmo.arquitecturamvpbase.views.activities.DetailActivity;
+import com.cosmo.arquitecturamvpbase.views.activities.ProductActivity;
+import com.cosmo.arquitecturamvpbase.views.activities.UpdateProductActivity;
 import com.cosmo.arquitecturamvpbase.views.activities.adapter.ProductAdapter;
 
 import java.util.ArrayList;
 
-/**
- * Created by leidyzulu on 16/09/17.
- */
+public class ContactActivity_View extends BaseActivity<Contact_Presenter> implements ContactActivity_interface {
 
-public class ProductActivity extends BaseActivity<ProductPresenter> implements IProductView {
-
-    private ListView productList;
-    private ProductAdapter productAdapter;
-    private ContentLoadingProgressBar progress;
-    private FloatingActionButton buttonLaunchCreate;
-
-
-    @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_product);
+        setContentView(R.layout.activity_contact__view);
         setPresenter(new ProductPresenter());
         getPresenter().inject(this, getValidateInternet());
         //createProgressDialog();
@@ -94,27 +90,27 @@ public class ProductActivity extends BaseActivity<ProductPresenter> implements I
 
     @Override
     public void showAlertDialogInternet(final int title, final int message) {
-       showAlertDialog(title, getResources().getString(message));
+        showAlertDialog(title, getResources().getString(message));
 
     }
 
     private void showAlertDialog(final int title, final String message) {
-       runOnUiThread(new Runnable() {
-           @Override
-           public void run() {
-               getShowAlertDialog().showAlertDialog(title, message, false, R.string.accept, new DialogInterface.OnClickListener() {
-                   @Override
-                   public void onClick(DialogInterface dialog, int which) {
+        runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                getShowAlertDialog().showAlertDialog(title, message, false, R.string.accept, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
                         getPresenter().getListProduct();
-                   }
-               }, R.string.cancel, new DialogInterface.OnClickListener() {
-                   @Override
-                   public void onClick(DialogInterface dialog, int which) {
-                       finish();
-                   }
-               });
-           }
-       });
+                    }
+                }, R.string.cancel, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        finish();
+                    }
+                });
+            }
+        });
     }
 
     @Override
@@ -149,4 +145,6 @@ public class ProductActivity extends BaseActivity<ProductPresenter> implements I
             }
         });
     }
+
+
 }

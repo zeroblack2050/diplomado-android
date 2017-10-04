@@ -28,7 +28,7 @@
     <string name="cancel">Cancelar</string>
     <string name="update_button">Update Product</string>
 
-    <item name="visible" type="id"/>
-    <item name="masked" type="id"/>
+    <item name="visible" type="id" />
+    <item name="masked" type="id" />
 
 </resources>
