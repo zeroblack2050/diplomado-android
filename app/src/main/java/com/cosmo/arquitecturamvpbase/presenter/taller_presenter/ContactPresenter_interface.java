@@ -6,5 +6,8 @@ package com.cosmo.arquitecturamvpbase.presenter.taller_presenter;
 
 public interface ContactPresenter_interface {
 
+    void showToast(int message);
+
+    void showToast(String message);
 
 }

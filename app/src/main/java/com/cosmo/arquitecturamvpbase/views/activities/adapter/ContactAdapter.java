@@ -3,6 +3,7 @@ package com.cosmo.arquitecturamvpbase.views.activities.adapter;
 import android.app.Activity;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,7 +11,6 @@ import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
 import com.cosmo.arquitecturamvpbase.R;
-import com.cosmo.arquitecturamvpbase.model.Product;
 import com.cosmo.arquitecturamvpbase.model.taller_model.Contact_Model;
 
 import java.util.ArrayList;
@@ -21,16 +21,16 @@ import java.util.ArrayList;
 
 public class ContactAdapter extends ArrayAdapter<Contact_Model> {
 
-    private ArrayList<Contact_Model> contact_model_adapter;
+    private ArrayList<Contact_Model> customers;
     private Activity context;
-    private Contact_Model contact_model_object;
+    private Contact_Model customer;
     private TextView name, username;
 
 
-    public ContactAdapter(Activity context, int resource, ArrayList<Contact_Model> contact_models) {
-        super(context, resource, contact_models);
+    public ContactAdapter(Activity context, int resource, ArrayList<Contact_Model> customers) {
+        super(context, resource, customers);
         this.context = context;
-        this.contact_model_adapter = contact_models;
+        this.customers = customers;
 
     }
 
@@ -38,10 +38,20 @@ public class ContactAdapter extends ArrayAdapter<Contact_Model> {
     @Override
     public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
         convertView = LayoutInflater.from(parent.getContext()).inflate(R.layout.activity_contact_item, parent, false);
-        this.contact_model_object = this.contact_model_adapter.get(position);
+        this.customer = this.customers.get(position);
+
+        Log.d("getContactList", "Size customers::" + customers.size());
+        Log.d("getContactList", "Customer::" + customer.getName());
+//
+//        if (customers.size()>0) {
+//            for(Contact_Model test: customers){
+//                Log.d("getContactList", "Name::" + test.getName());
+//            }
+//        }
+
         loadView(convertView);
-        name.setText(contact_model_object.getName());
-        username.setText(contact_model_object.getUserName());
+        name.setText(customer.getName());
+        username.setText(customer.getUserName());
         return convertView;
     }
 

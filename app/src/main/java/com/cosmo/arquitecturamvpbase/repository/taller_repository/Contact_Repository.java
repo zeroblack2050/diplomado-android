@@ -11,23 +11,23 @@ import java.util.ArrayList;
 
 public class Contact_Repository implements ContactRepository_interface {
 
-    private ContactRepository_interface contactRepository_interface;
+    private Contact_Services_interface contact_services_interface;
 
     public Contact_Repository() {
         ServicesFactory servicesFactory = new ServicesFactory();
-        contactRepository_interface = (ContactRepository_interface)
+        contact_services_interface = (Contact_Services_interface)
                 servicesFactory.getInstance(Contact_Services_interface.class);
     }
 
     @Override
     public ArrayList<Contact_Model> getContactList(){
-        ArrayList<Contact_Model> getContacts = contactRepository_interface.getContactList();
+        ArrayList<Contact_Model> getContacts = contact_services_interface.getContactList();
         return getContacts;
     }
 
     @Override
     public Contact_Model CreateContact(Contact_Model contact_model) {
-        Contact_Model createContact = contactRepository_interface.CreateContact(contact_model);
+        Contact_Model createContact = contact_services_interface.createContact(contact_model);
         return createContact;
     }
 }

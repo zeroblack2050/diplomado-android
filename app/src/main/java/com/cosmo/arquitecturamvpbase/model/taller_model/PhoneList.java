@@ -5,11 +5,13 @@ import android.location.Location;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
+import java.io.Serializable;
+
 /**
  * Created by Superadmin1 on 03/10/2017.
  */
 
-public class PhoneList {
+public class PhoneList implements Serializable{
 
     @SerializedName("description")
     @Expose
@@ -22,7 +24,7 @@ public class PhoneList {
 
     @SerializedName("location")
     @Expose
-    private Location [] location;
+    private Location location;
 
 
     public String getDescription() {
@@ -41,11 +43,11 @@ public class PhoneList {
         this.number = number;
     }
 
-    public Location[] getLocation() {
+    public Location getLocation() {
         return location;
     }
 
-    public void setLocation(Location[] location) {
+    public void setLocation(Location location) {
         this.location = location;
     }
 }

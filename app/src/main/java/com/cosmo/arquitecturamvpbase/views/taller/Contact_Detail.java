@@ -50,11 +50,11 @@ public class Contact_Detail extends BaseActivity<DetailContactPresenter> impleme
         contactname.setText(contact_model.getName());
         contactusername.setText(contact_model.getUserName());
 
-        phonedescription.setText(phoneList.getDescription());
-        phonenumber.setText(phoneList.getNumber());
+        //phonedescription.setText(phoneList.getDescription());
+        //phonenumber.setText(phoneList.getNumber());
 
-        locationtype.setText(location.getType());
-        locationcordinate.setText(location.getCoordinates().toString());
+        //locationtype.setText(location.getType());
+        //locationcordinate.setText(location.getCoordinates().toString());
     }
 
     private void loadView() {

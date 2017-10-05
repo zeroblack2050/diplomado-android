@@ -45,6 +45,7 @@ public class ProductPresenter extends BasePresenter<IProductView> {
     private void getProductList() {
 
         try {
+
             ArrayList<Product> productArrayList = productRepository.getProductList();
             getView().showProductList(productArrayList);
 

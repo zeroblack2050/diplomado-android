@@ -19,14 +19,14 @@ public class Contact_Model implements Serializable{
     private String name;
 
 
-    @SerializedName("username")
+    @SerializedName("surname")
     @Expose
     private String userName;
 
 
     @SerializedName("phoneList")
     @Expose
-    private ArrayList phoneList;
+    private ArrayList<PhoneList> phoneList;
 
     public String getName() {
         return name;

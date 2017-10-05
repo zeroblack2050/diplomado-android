@@ -6,14 +6,14 @@
     android:layout_height="match_parent">
 
 
-    <android.support.v4.widget.ContentLoadingProgressBar
-        android:id="@+id/progress"
-        android:layout_width="wrap_content"
-        style="?android:attr/progressBarStyleLarge"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_centerVertical="true" >
-    </android.support.v4.widget.ContentLoadingProgressBar>
+    <!--<android.support.v4.widget.ContentLoadingProgressBar-->
+        <!--android:id="@+id/progress"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--style="?android:attr/progressBarStyleLarge"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_centerHorizontal="true"-->
+        <!--android:layout_centerVertical="true" >-->
+    <!--</android.support.v4.widget.ContentLoadingProgressBar>-->
 
     <ListView
         android:id="@+id/contact_listView"
@@ -23,7 +23,7 @@
 
 
         <android.support.design.widget.FloatingActionButton
-            android:id="@+id/creatarContacto"
+            android:id="@+id/createContact"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentEnd="true"

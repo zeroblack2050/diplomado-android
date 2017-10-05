@@ -6,7 +6,7 @@ package com.cosmo.arquitecturamvpbase.helper;
 
 public class Constants {
 
-    public final static String URL_BASE = "https://shoppingproducts.herokuapp.com/customers";
+    public final static String URL_BASE = "https://shoppingproducts.herokuapp.com";
     public final static int TIME_OUT = 6;
     public final static String ITEM_PRODUCT = "Itemproduct";
     public final static String ITEM_CONTACT = "Itemcontact";

@@ -12,7 +12,7 @@ import java.util.ArrayList;
 
 public interface IContactView extends IBaseView{
 
-    void showContactList(ArrayList<Contact_Model> productArrayList);
+    void showContactList(ArrayList<Contact_Model> contact_models);
 
     void showAlertDialogInternet(int title, int message);
 
