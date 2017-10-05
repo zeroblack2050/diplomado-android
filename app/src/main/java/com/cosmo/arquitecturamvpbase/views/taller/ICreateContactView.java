@@ -1,4 +1,4 @@
-package com.cosmo.arquitecturamvpbase.views.activities.adapter;
+package com.cosmo.arquitecturamvpbase.views.taller;
 
 import com.cosmo.arquitecturamvpbase.views.IBaseView;
 

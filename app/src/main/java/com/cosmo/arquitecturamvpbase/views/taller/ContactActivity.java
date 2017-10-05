@@ -12,16 +12,10 @@ import android.widget.ListView;
 import android.widget.Toast;
 
 import com.cosmo.arquitecturamvpbase.R;
-import com.cosmo.arquitecturamvpbase.helper.Constants;
 import com.cosmo.arquitecturamvpbase.model.taller_model.Contact_Model;
-import com.cosmo.arquitecturamvpbase.model.taller_model.PhoneList;
 import com.cosmo.arquitecturamvpbase.presenter.taller_presenter.Contact_Presenter;
-import com.cosmo.arquitecturamvpbase.repository.taller_repository.Contact_Repository;
 import com.cosmo.arquitecturamvpbase.views.BaseActivity;
-import com.cosmo.arquitecturamvpbase.views.activities.CreateProductActivity;
-import com.cosmo.arquitecturamvpbase.views.activities.UpdateProductActivity;
 import com.cosmo.arquitecturamvpbase.views.activities.adapter.ContactAdapter;
-import com.cosmo.arquitecturamvpbase.views.activities.adapter.CreateContactActivity;
 
 import java.util.ArrayList;
 
