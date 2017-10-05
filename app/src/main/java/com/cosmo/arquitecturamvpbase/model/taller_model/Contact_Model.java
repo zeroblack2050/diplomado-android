@@ -6,6 +6,7 @@ import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 
 /**
  * Created by Superadmin1 on 03/10/2017.
@@ -25,7 +26,7 @@ public class Contact_Model implements Serializable{
 
     @SerializedName("phoneList")
     @Expose
-    private String [] phoneList;
+    private ArrayList phoneList;
 
     public String getName() {
         return name;
@@ -43,11 +44,11 @@ public class Contact_Model implements Serializable{
         this.userName = userName;
     }
 
-    public String[] getPhoneList() {
+    public ArrayList getPhoneList() {
         return phoneList;
     }
 
-    public void setPhoneList(String[] phoneList) {
+    public void setPhoneList(ArrayList phoneList) {
         this.phoneList = phoneList;
     }
 }

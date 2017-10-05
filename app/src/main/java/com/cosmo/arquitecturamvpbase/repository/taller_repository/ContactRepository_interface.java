@@ -11,7 +11,6 @@ public interface ContactRepository_interface {
 
     ArrayList<Contact_Model> getContactList();
 
-
     Contact_Model CreateContact(Contact_Model contact_model);
 
 }

@@ -13,7 +13,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".views.taller.ContactActivity_View">
+        <activity android:name=".views.taller.ContactActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -23,7 +23,7 @@
         <activity android:name=".views.activities.DetailActivity" />
         <activity android:name=".views.activities.CreateProductActivity" />
         <activity android:name=".views.activities.UpdateProductActivity" />
-        <!--<activity android:name=".views.taller.ContactActivity_View">-->
+        <!--<activity android:name=".views.taller.ContactActivity">-->
         <activity android:name=".views.activities.ProductActivity">
         </activity>
 

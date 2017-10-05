@@ -22,11 +22,15 @@ public class ProductRepository implements IProductRepository {
         ServicesFactory servicesFactory = new ServicesFactory();
         services = (IServices) servicesFactory.getInstance(IServices.class);
     }
+
+
     @Override
     public ArrayList<Product> getProductList() throws RetrofitError{
         ArrayList<Product>  products = services.getProductList();
         return products;
     }
+
+
     @Override
     public Product createProduct(Product product) throws RetrofitError{
         Product productCreated = services.createProduct(product);

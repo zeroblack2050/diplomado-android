@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center|start"
+    android:paddingLeft="12dp"
+    android:paddingRight="12dp">
+
+    <ImageView
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:src="@drawable/contacto"
+        android:paddingLeft="8dp"
+        android:paddingRight="8dp"/>
+
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/item_name_contact"
+            android:layout_marginLeft="8dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Nombre de usuario"
+            android:textSize="18dp"
+            android:textStyle="bold"
+            android:paddingBottom="14dp"
+            android:paddingTop="14dp"/>
+
+        <TextView
+            android:id="@+id/item_username_contact"
+            android:layout_marginLeft="8dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Sobrenombre"
+            android:textSize="18dp"
+            android:textStyle="bold"
+            android:paddingBottom="14dp"
+            android:paddingTop="14dp" />
+
+    </LinearLayout>
+
+
+
+</LinearLayout>

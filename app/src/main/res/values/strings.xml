@@ -27,6 +27,12 @@
     <string name="accept">Aceptar</string>
     <string name="cancel">Cancelar</string>
     <string name="update_button">Update Product</string>
+    <string name="contact_username">Nombre de usuario:</string>
+    <string name="contact_description">Descripción:</string>
+    <string name="contact_number">Número de contacto:</string>
+    <string name="contact_type">Tipo:</string>
+    <string name="contact_cordinates">Ubicación:</string>
+    <string name="contact_name">Nombre completo:</string>
 
     <item name="visible" type="id" />
     <item name="masked" type="id" />

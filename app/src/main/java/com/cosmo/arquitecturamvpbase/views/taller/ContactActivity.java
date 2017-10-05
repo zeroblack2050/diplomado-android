@@ -5,7 +5,6 @@ import android.content.Intent;
 import android.support.annotation.Nullable;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.widget.ContentLoadingProgressBar;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
@@ -13,77 +12,78 @@ import android.widget.ListView;
 
 import com.cosmo.arquitecturamvpbase.R;
 import com.cosmo.arquitecturamvpbase.helper.Constants;
-import com.cosmo.arquitecturamvpbase.model.Product;
 import com.cosmo.arquitecturamvpbase.model.taller_model.Contact_Model;
-import com.cosmo.arquitecturamvpbase.presenter.ProductPresenter;
 import com.cosmo.arquitecturamvpbase.presenter.taller_presenter.Contact_Presenter;
 import com.cosmo.arquitecturamvpbase.views.BaseActivity;
 import com.cosmo.arquitecturamvpbase.views.activities.CreateProductActivity;
-import com.cosmo.arquitecturamvpbase.views.activities.DetailActivity;
-import com.cosmo.arquitecturamvpbase.views.activities.ProductActivity;
 import com.cosmo.arquitecturamvpbase.views.activities.UpdateProductActivity;
-import com.cosmo.arquitecturamvpbase.views.activities.adapter.ProductAdapter;
+import com.cosmo.arquitecturamvpbase.views.activities.adapter.ContactAdapter;
 
 import java.util.ArrayList;
 
-public class ContactActivity_View extends BaseActivity<Contact_Presenter> implements ContactActivity_interface {
+public class ContactActivity extends BaseActivity<Contact_Presenter> implements IContactView {
+
+    private ListView contactListView;
+    private ContactAdapter contactAdapter;
+    private ContentLoadingProgressBar progress;
+    private FloatingActionButton buttonLaunchCreate;
 
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_contact__view);
-        setPresenter(new ProductPresenter());
+        setContentView(R.layout.activity_contact_list);
+        setPresenter(new Contact_Presenter());
         getPresenter().inject(this, getValidateInternet());
         //createProgressDialog();
-        productList = (ListView) findViewById(R.id.product_listView);
+        contactListView = (ListView) findViewById(R.id.contact_listView);
         progress = (ContentLoadingProgressBar) findViewById(R.id.progress);
         progress.show();
-        getPresenter().getListProduct();
-        loadEvents();
+        getPresenter().createContactThread();
+        //loadEvents();
         //UpdateProduct();
     }
 
     @Override
     protected void onRestart() {
         super.onRestart();
-        getPresenter().getListProduct();
+        getPresenter().createContactThread();
     }
 
-    private void loadEvents() {
+    /*private void loadEvents() {
         buttonLaunchCreate = (FloatingActionButton) findViewById(R.id.fab_launch_createproduct);
         buttonLaunchCreate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(ProductActivity.this, CreateProductActivity.class);
+                Intent intent = new Intent(ContactActivity.this, CreateProductActivity.class);
                 startActivity(intent);
             }
         });
-    }
+    }*/
 
     @Override
     protected void onResume() {
         super.onResume();
         progress.show();
-        getPresenter().getListProduct();
+        getPresenter().createContactThread();
     }
 
     @Override
-    public void showProductList(final ArrayList<Product> productArrayList) {
+    public void showContactList(final ArrayList<Contact_Model> contact_modelArrayList) {
         runOnUiThread(new Runnable() {
             @Override
             public void run() {
                 progress.hide();
-                callAdapter(productArrayList);
+                callAdapter(contact_modelArrayList);
             }
         });
     }
 
 
-    public void showUpdateProduct(final ArrayList<Product> productArrayList) {
+    public void showUpdateProduct(final ArrayList<Contact_Model> productArrayList) {
         runOnUiThread(new Runnable() {
             @Override
             public void run() {
                 progress.hide();
-                UpdateProduct(productArrayList);
+                updateContact(productArrayList);
             }
         });
     }
@@ -101,7 +101,7 @@ public class ContactActivity_View extends BaseActivity<Contact_Presenter> implem
                 getShowAlertDialog().showAlertDialog(title, message, false, R.string.accept, new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                        getPresenter().getListProduct();
+                        getPresenter().createContactThread();
                     }
                 }, R.string.cancel, new DialogInterface.OnClickListener() {
                     @Override
@@ -118,28 +118,28 @@ public class ContactActivity_View extends BaseActivity<Contact_Presenter> implem
         showAlertDialog(title, message);
     }
 
-    private void callAdapter(final ArrayList<Product> productArrayList) {
-        productAdapter =  new ProductAdapter(this, R.id.product_listView, productArrayList);
-        productList.setAdapter(productAdapter);
-        productList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+    private void callAdapter(final ArrayList<Contact_Model> contactArrayList) {
+        contactAdapter =  new ContactAdapter(this, R.id.contact_listView, contactArrayList);
+        contactListView.setAdapter(contactAdapter);
+        contactListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Intent intent = new Intent(ProductActivity.this, DetailActivity.class);
-                intent.putExtra(Constants.ITEM_PRODUCT,productArrayList.get(position));
+                Intent intent = new Intent(ContactActivity.this, Contact_Detail.class);
+                intent.putExtra(Constants.ITEM_CONTACT,contactArrayList.get(position));
                 startActivity(intent);
             }
         });
     }
 
-    private void UpdateProduct(final ArrayList<Product> productArrayList){
-        productAdapter =  new ProductAdapter(this, R.id.product_listView, productArrayList);
-        productList.setAdapter(productAdapter);
-        productList.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+    private void updateContact(final ArrayList<Contact_Model> contactArrayList){
+        contactAdapter =  new ContactAdapter(this, R.id.contact_listView, contactArrayList);
+        contactListView.setAdapter(contactAdapter);
+        contactListView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
             @Override
             public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
 
-                Intent intent = new Intent(ProductActivity.this, UpdateProductActivity.class);
-                intent.putExtra(Constants.ITEM_PRODUCT,productArrayList.get(position));
+                Intent intent = new Intent(ContactActivity.this, UpdateProductActivity.class);
+                intent.putExtra(Constants.ITEM_PRODUCT,contactArrayList.get(position));
                 startActivity(intent);
                 return false;
             }

@@ -8,10 +8,10 @@
     android:paddingTop="8dp"
     android:paddingLeft="8dp"
     android:paddingRight="8dp"
-    tools:context="com.cosmo.arquitecturamvpbase.views.taller.ContactActivity_View">
+    tools:context="com.cosmo.arquitecturamvpbase.views.taller.ContactActivity">
 
     <EditText
-        android:id="@+id/contact_name"
+        android:id="@+id/contact_name_edittex"
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:hint="Nombre"
@@ -19,7 +19,7 @@
         android:paddingTop="4dp"/>
 
     <EditText
-        android:id="@+id/contact_username"
+        android:id="@+id/contact_username_edittex"
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:hint="Usernombre"
@@ -27,7 +27,7 @@
         android:paddingTop="4dp"/>
 
     <EditText
-        android:id="@+id/contact_description"
+        android:id="@+id/contact_description_edittex"
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:hint="Descripción"
@@ -35,7 +35,23 @@
         android:paddingTop="4dp"/>
 
     <EditText
-        android:id="@+id/contact_number"
+        android:id="@+id/contact_number_edittex"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:hint="Número"
+        android:paddingBottom="4dp"
+        android:paddingTop="4dp"/>
+
+    <EditText
+        android:id="@+id/contact_type_edittex"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:hint="Tipo"
+        android:paddingBottom="4dp"
+        android:paddingTop="4dp"/>
+
+    <EditText
+        android:id="@+id/contact_cordinates_edittex"
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:hint="Número"
@@ -54,8 +70,12 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Crear contacto"
+        android:textColor="@color/colorWhite"
+        android:textSize="25dp"
+        android:textStyle="bold"
         android:paddingBottom="4dp"
         android:paddingTop="4dp"
-        android:textAllCaps="false"/>
+        android:textAllCaps="false"
+        android:backgroundTint="@color/colorPrimaryDark"/>
 
 </LinearLayout>
