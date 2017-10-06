@@ -8,7 +8,7 @@ import com.cosmo.arquitecturamvpbase.views.IBaseView;
 
 public interface ICreateContactView extends IBaseView {
 
-    void showResultCreateNewProduct(boolean isCreated);
+    void showResultCreateNewContact(boolean isCreated);
 
     void showAlertInternet(int title, int message);
 }

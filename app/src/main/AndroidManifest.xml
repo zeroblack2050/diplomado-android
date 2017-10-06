@@ -25,6 +25,7 @@
         <activity android:name=".views.activities.UpdateProductActivity" />
         <!--<activity android:name=".views.taller.ContactActivity">-->
         <activity android:name=".views.activities.ProductActivity"/>
+        <activity android:name=".views.taller.CreateContactActivity"/>
         <activity android:name=".views.taller.Contact_Detail">
         </activity>
 

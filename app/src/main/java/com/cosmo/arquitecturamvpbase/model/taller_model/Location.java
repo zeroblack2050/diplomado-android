@@ -11,28 +11,28 @@ import java.io.Serializable;
 
 public class Location implements Serializable{
 
-    @SerializedName("type")
+    @SerializedName("typelocation")
     @Expose
-    private String type;
+    private String typelocation;
 
 
-    @SerializedName("coordinates")
+    @SerializedName("coordinateslocation")
     @Expose
-    private Double [] coordinates;
+    private Double [] coordinateslocation;
 
-    public String getType() {
-        return type;
+    public String getTypelocation() {
+        return typelocation;
     }
 
-    public void setType(String type) {
-        this.type = type;
+    public void setTypelocation(String typelocation) {
+        this.typelocation = typelocation;
     }
 
-    public Double[] getCoordinates() {
-        return coordinates;
+    public Double[] getCoordinateslocation() {
+        return coordinateslocation;
     }
 
-    public void setCoordinates(Double[] coordinates) {
-        this.coordinates = coordinates;
+    public void setCoordinateslocation(Double[] coordinateslocation) {
+        this.coordinateslocation = coordinateslocation;
     }
 }

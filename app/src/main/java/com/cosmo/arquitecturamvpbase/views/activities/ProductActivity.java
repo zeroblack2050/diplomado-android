@@ -129,7 +129,7 @@ public class ProductActivity extends BaseActivity<ProductPresenter> implements I
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Intent intent = new Intent(ProductActivity.this, DetailActivity.class);
-                intent.putExtra(Constants.ITEM_PRODUCT,productArrayList.get(position));
+                intent.putExtra(Constants.ITEM_CONTACT,productArrayList.get(position));
                 startActivity(intent);
             }
         });
