@@ -8,11 +8,13 @@ import android.widget.Toast;
 import com.cosmo.arquitecturamvpbase.R;
 import com.cosmo.arquitecturamvpbase.helper.Constants;
 import com.cosmo.arquitecturamvpbase.model.taller_model.Contact_Model;
-import com.cosmo.arquitecturamvpbase.model.taller_model.Location;
+import com.cosmo.arquitecturamvpbase.model.taller_model.Locationj;
 import com.cosmo.arquitecturamvpbase.model.taller_model.PhoneList;
 import com.cosmo.arquitecturamvpbase.presenter.taller_presenter.DetailContactPresenter;
 import com.cosmo.arquitecturamvpbase.repository.taller_repository.Contact_Repository;
 import com.cosmo.arquitecturamvpbase.views.BaseActivity;
+
+import java.util.ArrayList;
 
 /**
  * Created by jasmany on 4/10/2017.
@@ -24,6 +26,8 @@ public class Contact_Detail extends BaseActivity<DetailContactPresenter> impleme
     private TextView phonedescription, phonenumber;
     private TextView locationtype , locationcordinate;
     private Contact_Model contact_model;
+    private ArrayList<PhoneList> getPhone;
+    private Locationj locationj;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceStat) {
@@ -42,22 +46,23 @@ public class Contact_Detail extends BaseActivity<DetailContactPresenter> impleme
 
         contactname.setText(contact_model.getName());
         contactsurname.setText(contact_model.getUserName());
+        getPhone = contact_model.getPhoneList();
+        phonenumber.setText(getPhone.get(0).getNumber().toString());
 
-        //phonedescription.setText(contact_model.getPhoneList().get(0).toString());
-        //phonenumber.setText(contact_model.getPhoneList().get(1).toString());
+        locationj = getPhone.get(1).getLocation();
 
-        //locationtype.setText(contact_model.getPhoneList().get(3).toString());
-        //locationcordinate.setText(contact_model.getPhoneList().get(0).toString());
+
+        locationtype.setText(locationj.getTypelocation().toString());
+        locationcordinate.setText(String.valueOf(locationj.getCoordinateslocation()));
     }
 
     private void loadView() {
 
         contactname = (TextView) findViewById(R.id.consult_contact_name);
         contactsurname =(TextView) findViewById(R.id.consult_contact_username);
-        //phonedescription = (TextView) findViewById(R.id.consult_contact_description);
-        //phonenumber = (TextView) findViewById(R.id.consult_contact_number);
-        //locationtype =(TextView) findViewById(R.id.consult_contact_type);
-        //locationcordinate = (TextView) findViewById(R.id.consult_contact_cordinates);
+        phonenumber = (TextView) findViewById(R.id.consult_contact_number);
+        locationtype =(TextView) findViewById(R.id.consult_contact_type);
+        locationcordinate = (TextView) findViewById(R.id.consult_contact_cordinates);
 
 
 
@@ -89,7 +94,7 @@ public class Contact_Detail extends BaseActivity<DetailContactPresenter> impleme
     }
 
 
-    /*public void deleteProduct(View view){
-        getPresenter().deleteProduct(contact_model.getId());
+    /*public void deleteContactOne(View view){
+        getPresenter().deleteContactOne(contact_model.getId());
     }*/
 }

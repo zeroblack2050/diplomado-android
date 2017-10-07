@@ -51,4 +51,6 @@ public class Contact_Model implements Serializable{
     public void setPhoneList(ArrayList phoneList) {
         this.phoneList = phoneList;
     }
+
+
 }

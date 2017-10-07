@@ -12,7 +12,7 @@ import android.widget.Toast;
 
 import com.cosmo.arquitecturamvpbase.R;
 import com.cosmo.arquitecturamvpbase.model.taller_model.Contact_Model;
-import com.cosmo.arquitecturamvpbase.model.taller_model.Location;
+import com.cosmo.arquitecturamvpbase.model.taller_model.Locationj;
 import com.cosmo.arquitecturamvpbase.model.taller_model.PhoneList;
 import com.cosmo.arquitecturamvpbase.presenter.taller_presenter.CreateContactPresenter;
 import com.cosmo.arquitecturamvpbase.views.BaseActivity;
@@ -26,10 +26,13 @@ import java.util.ArrayList;
 public class CreateContactActivity extends BaseActivity<CreateContactPresenter> implements ICreateContactView, TextWatcher {
 
 
-    private EditText contactName, contacSurname, contactDescription, contactNumero, contactTipo,contactLatitud, contactAltitud;
+    private EditText contactName, contacSurname, contactNumero, contactTipo,contactLatitud, contactAltitud;
     private Button product_btnCreate;
     private ContentLoadingProgressBar progress;
-    private Location locationprueba;
+    private Contact_Model contact_model;
+    private PhoneList phoneList;
+    private ArrayList<PhoneList> phone;
+    private Locationj locationj;
 
 
     @Override
@@ -51,8 +54,6 @@ public class CreateContactActivity extends BaseActivity<CreateContactPresenter> 
         contacSurname.addTextChangedListener(this);
 
 
-        contactDescription = (EditText) findViewById(R.id.contactcreate_description_edittex);
-        contactDescription.addTextChangedListener(this);
         contactNumero = (EditText) findViewById(R.id.contactcreate_number_edittex);
         contactNumero.addTextChangedListener(this);
         contactTipo = (EditText) findViewById(R.id.contactcreate_type_edittex);
@@ -73,23 +74,29 @@ public class CreateContactActivity extends BaseActivity<CreateContactPresenter> 
         product_btnCreate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Contact_Model contact_model = new Contact_Model();
+                contact_model = new Contact_Model();
+                phoneList = new PhoneList();
+                locationj = new Locationj();
+
+                phone = new ArrayList<>();
+
                 contact_model.setName(contactName.getText().toString());
                 contact_model.setUserName(contacSurname.getText().toString());
 
-                String descri = contactDescription.getText().toString();
-                String nume = contactNumero.getText().toString();
-                String tipo = contactTipo.getText().toString();
-
-                String locationlatitud = contactLatitud.getText().toString();
-                String locationaltitud = contactAltitud.getText().toString();
-
-                Location loca= new Location();
 
 
-                //contact_model.setUserName(contactLatitud.getText().toString());
-                //contact_model.setUserName(contactAltitud.getText().toString());
+                phoneList.setNumber(contactNumero.getText().toString());
 
+
+                locationj.setTypelocation(contactTipo.getText().toString());
+                Double[] cordinate = new Double[2];
+                cordinate[0]= Double.valueOf(contactLatitud.getText().toString());
+                cordinate[1]= Double.valueOf(contactAltitud.getText().toString());
+                locationj.setCoordinateslocation(cordinate);
+                phoneList.setLocation(locationj);
+
+
+                contact_model.setPhoneList(phone);
                 getPresenter().createNewContact(contact_model);
             }
         });
@@ -109,7 +116,6 @@ public class CreateContactActivity extends BaseActivity<CreateContactPresenter> 
     public void afterTextChanged(Editable s) {
         if (!contactName.getText().toString().trim().isEmpty() &&
                 !contacSurname.getText().toString().trim().isEmpty() &&
-                !contactDescription.getText().toString().trim().isEmpty() &&
                 !contactNumero.getText().toString().trim().isEmpty() &&
                 !contactTipo.getText().toString().trim().isEmpty()&&
                 !contactLatitud.getText().toString().trim().isEmpty()&&

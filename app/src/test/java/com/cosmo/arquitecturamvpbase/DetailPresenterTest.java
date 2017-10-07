@@ -111,7 +111,7 @@ public class DetailPresenterTest {
     /*@Test
     public void methodCreateThreadShouldShowProgressDialog(){
         String id = "13g1jhhd232";
-        detailProductPresenter.createThreadDeleteProduct(id);
+        detailProductPresenter.createThreadDeleteContact(id);
         verify(detailProductView).showProgress(R.string.loading_message);
     }*/
 

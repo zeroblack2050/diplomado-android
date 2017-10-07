@@ -1,9 +1,7 @@
 package com.cosmo.arquitecturamvpbase.presenter.taller_presenter;
 
 import com.cosmo.arquitecturamvpbase.R;
-import com.cosmo.arquitecturamvpbase.model.DeleteResponse;
 import com.cosmo.arquitecturamvpbase.presenter.BasePresenter;
-import com.cosmo.arquitecturamvpbase.repository.RepositoryError;
 import com.cosmo.arquitecturamvpbase.repository.taller_repository.ContactRepository_interface;
 import com.cosmo.arquitecturamvpbase.views.taller.IDetailContactView;
 
@@ -19,16 +17,16 @@ public class DetailContactPresenter extends BasePresenter<IDetailContactView> {
         this.contactRepository_interface = contactRepository_interface;
     }
 
-    public void deleteProduct(String id) {
+    public void deleteContactOne(String id) {
         if(getValidateInternet().isConnected()){
-            createThreadDeleteProduct(id);
+            createThreadDeleteContact(id);
         }else{
             getView().showToast(R.string.validate_internet);
         }
     }
 
-    public void createThreadDeleteProduct(final String id) {
-        getView().showProgress(R.string.loading_message);
+    public void createThreadDeleteContact(final String id) {
+        //getView().showProgress(R.string.loading_message);
         Thread thread = new Thread(new Runnable() {
             @Override
             public void run() {
@@ -41,7 +39,7 @@ public class DetailContactPresenter extends BasePresenter<IDetailContactView> {
     /*public void deleteProductRepository(String id) {
 
         try{
-            DeleteResponse deleteResponse = productRepository.deleteProduct(id);
+            DeleteResponse deleteResponse = productRepository.deleteContactOne(id);
             if(deleteResponse.isStatus()){
                 getView().showToast(R.string.correct);
             }else{

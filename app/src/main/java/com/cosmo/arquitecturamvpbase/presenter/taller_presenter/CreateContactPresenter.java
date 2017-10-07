@@ -28,7 +28,7 @@ public class CreateContactPresenter extends BasePresenter<ICreateContactView> {
         }
     }
 
-    private void createThreadCreateContact(final Contact_Model contact_model) {
+    public void createThreadCreateContact(final Contact_Model contact_model) {
         Thread thread = new Thread(new Runnable() {
             @Override
             public void run() {
@@ -38,7 +38,7 @@ public class CreateContactPresenter extends BasePresenter<ICreateContactView> {
         thread.start();
     }
 
-    private void createNewContactService(Contact_Model contact_model){
+    public void createNewContactService(Contact_Model contact_model){
         try{
             contact_repository.CreateContact(contact_model);
             getView().showResultCreateNewContact(true);

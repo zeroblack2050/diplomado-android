@@ -9,14 +9,14 @@ import java.io.Serializable;
  * Created by Superadmin1 on 03/10/2017.
  */
 
-public class Location implements Serializable{
+public class Locationj implements Serializable{
 
-    @SerializedName("typelocation")
+    @SerializedName("type")
     @Expose
     private String typelocation;
 
 
-    @SerializedName("coordinateslocation")
+    @SerializedName("coordinates")
     @Expose
     private Double [] coordinateslocation;
 

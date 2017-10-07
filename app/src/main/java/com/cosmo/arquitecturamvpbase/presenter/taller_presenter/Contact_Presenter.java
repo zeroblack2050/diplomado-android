@@ -28,15 +28,15 @@ public class Contact_Presenter extends BasePresenter<IContactView> {
 
 
     public void PresConsultContact() {
-        if (getValidateInternet().isConnected()) {
+        //if (getValidateInternet().isConnected()) {
             createThreadConsultContact();
-        } else {
-            getView().showAlertDialogInternet(R.string.error, R.string.validate_internet);
-        }
+        //} else {
+            //getView().showAlertDialogInternet(R.string.error, R.string.validate_internet);
+        //}
     }
 
     public void createThreadConsultContact() {
-        // getView().showProgress(R.string.loading_message);
+        //getView().showProgress(R.string.loading_message);
         Thread thread = new Thread(new Runnable() {
             @Override
             public void run() {
@@ -51,7 +51,6 @@ public class Contact_Presenter extends BasePresenter<IContactView> {
         try {
             //Log.e("Error","Entro aqui");
             ArrayList<Contact_Model> customers = contact_repository.getContactList();
-
             getView().showContactList(customers);
 
         } catch (RetrofitError retrofitError) {

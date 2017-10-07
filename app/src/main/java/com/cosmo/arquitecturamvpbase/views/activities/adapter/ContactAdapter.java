@@ -40,8 +40,8 @@ public class ContactAdapter extends ArrayAdapter<Contact_Model> {
         convertView = LayoutInflater.from(parent.getContext()).inflate(R.layout.activity_contact_item, parent, false);
         this.customer = this.customers.get(position);
 
-        Log.d("getContactList", "Size customers::" + customers.size());
-        Log.d("getContactList", "Customer::" + customer.getName());
+        //Log.d("getContactList", "Size customers::" + customers.size());
+        //Log.d("getContactList", "Customer::" + customer.getName());
 //
 //        if (customers.size()>0) {
 //            for(Contact_Model test: customers){
