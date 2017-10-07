@@ -12,7 +12,6 @@ import android.widget.ListView;
 import android.widget.Toast;
 
 import com.cosmo.arquitecturamvpbase.R;
-import com.cosmo.arquitecturamvpbase.helper.Constants;
 import com.cosmo.arquitecturamvpbase.model.taller_model.Contact_Model;
 import com.cosmo.arquitecturamvpbase.presenter.taller_presenter.Contact_Presenter;
 import com.cosmo.arquitecturamvpbase.views.BaseActivity;
@@ -36,7 +35,7 @@ public class ContactActivity extends BaseActivity<Contact_Presenter> implements 
         contactListView = (ListView) findViewById(R.id.contact_listView);
  //       progress = (ContentLoadingProgressBar) findViewById(R.id.progress);
 //        progress.show();
-        getPresenter().createContactThread();
+        getPresenter().PresConsultContact();
         loadEvents();
         //UpdateProduct();
     }
@@ -44,7 +43,7 @@ public class ContactActivity extends BaseActivity<Contact_Presenter> implements 
     @Override
     protected void onRestart() {
         super.onRestart();
-        getPresenter().createContactThread();
+        getPresenter().PresConsultContact();
     }
 
     private void loadEvents() {
@@ -62,7 +61,7 @@ public class ContactActivity extends BaseActivity<Contact_Presenter> implements 
     protected void onResume() {
         super.onResume();
 //        progress.show();
-        getPresenter().createContactThread();
+        getPresenter().PresConsultContact();
     }
 
     @Override
@@ -101,7 +100,7 @@ public class ContactActivity extends BaseActivity<Contact_Presenter> implements 
                 getShowAlertDialog().showAlertDialog(title, message, false, R.string.accept, new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                        getPresenter().createContactThread();
+                        getPresenter().PresConsultContact();
                     }
                 }, R.string.cancel, new DialogInterface.OnClickListener() {
                     @Override
@@ -125,10 +124,10 @@ public class ContactActivity extends BaseActivity<Contact_Presenter> implements 
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
-                Intent intent = new Intent(ContactActivity.this, Contact_Detail.class);
-                intent.putExtra(Constants.ITEM_CONTACT,customers.get(position));
-                startActivity(intent);
-                //Toast.makeText(ContactActivity.this,"Pendiente por hacer",Toast.LENGTH_SHORT).show();
+                //Intent intent = new Intent(ContactActivity.this, Contact_Detail.class);
+                //intent.putExtra(Constants.ITEM_CONTACT,customers.get(position));
+                ///startActivity(intent);
+                Toast.makeText(ContactActivity.this,"Pendiente por hacer",Toast.LENGTH_SHORT).show();
             }
         });
     }
