@@ -2,7 +2,7 @@ package com.cosmo.arquitecturamvpbase.presenter.taller_presenter;
 
 import com.cosmo.arquitecturamvpbase.R;
 import com.cosmo.arquitecturamvpbase.helper.IValidateInternet;
-import com.cosmo.arquitecturamvpbase.model.taller_model.Contact_Model;
+import com.cosmo.arquitecturamvpbase.model.taller_model.ContactModel;
 import com.cosmo.arquitecturamvpbase.model.taller_model.Locationj;
 import com.cosmo.arquitecturamvpbase.model.taller_model.PhoneList;
 import com.cosmo.arquitecturamvpbase.repository.taller_repository.ContactRepository_interface;
@@ -28,7 +28,7 @@ import static org.mockito.Mockito.when;
 @RunWith(MockitoJUnitRunner.class)
 public class CreateContactPresenterTest {
 
-    @Mock   private Contact_Model contact_model;
+    @Mock   private ContactModel contact_model;
     @Mock   private CreateContactPresenter createContactPresenter;
     @Mock   private ICreateContactView iCreateContactView;
     @Mock   private IValidateInternet iValidateInternet;
@@ -50,8 +50,8 @@ public class CreateContactPresenterTest {
     }
     private ArrayList<PhoneList> arrayList = new ArrayList<>();
 
-    private Contact_Model contact_model(){
-        Contact_Model contact_model = new Contact_Model();
+    private ContactModel contact_model(){
+        ContactModel contact_model = new ContactModel();
         contact_model.setName("jas");
         contact_model.setUserName("jasmany");
         contact_model.setPhoneList(arrayList);
@@ -68,14 +68,14 @@ public class CreateContactPresenterTest {
 
     @Test   public void shouldCallMethodCreateThreadCreateContactWhenInterneIsOn(){
         when(iValidateInternet.isConnected()).thenReturn(true);
-        Contact_Model  contact_model = contact_model();
+        ContactModel contact_model = contact_model();
         createContactPresenter.createNewContact(contact_model);
         verify(createContactPresenter).createThreadCreateContact(contact_model);
         verify(iCreateContactView, never()).showAlertInternet(R.string.error, R.string.validate_internet);
     }
 
     @Test   public void shouldCallMethodcreateThreadCreateContactWhenInternetIsOn(){
-        Contact_Model  contact_model = contact_model();
+        ContactModel contact_model = contact_model();
         createContactPresenter.createThreadCreateContact(contact_model);
         verify(createContactPresenter).createNewContactService(contact_model);
     }

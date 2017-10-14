@@ -1,7 +1,6 @@
 package com.cosmo.arquitecturamvpbase.views.taller;
 
-import com.cosmo.arquitecturamvpbase.model.Product;
-import com.cosmo.arquitecturamvpbase.model.taller_model.Contact_Model;
+import com.cosmo.arquitecturamvpbase.model.taller_model.ContactModel;
 import com.cosmo.arquitecturamvpbase.views.IBaseView;
 
 import java.util.ArrayList;
@@ -12,7 +11,7 @@ import java.util.ArrayList;
 
 public interface IContactView extends IBaseView{
 
-    void showContactList(ArrayList<Contact_Model> contact_models);
+    void showContactList(ArrayList<ContactModel> contact_models);
 
     void showAlertDialogInternet(int title, int message);
 

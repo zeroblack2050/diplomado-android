@@ -1,7 +1,7 @@
 package com.cosmo.arquitecturamvpbase.repository.taller_repository;
 
 import com.cosmo.arquitecturamvpbase.helper.ServicesFactory;
-import com.cosmo.arquitecturamvpbase.model.taller_model.Contact_Model;
+import com.cosmo.arquitecturamvpbase.model.taller_model.ContactModel;
 import com.cosmo.arquitecturamvpbase.services.taller_services.Contact_Services_interface;
 import java.util.ArrayList;
 
@@ -20,14 +20,14 @@ public class Contact_Repository implements ContactRepository_interface {
     }
 
     @Override
-    public ArrayList<Contact_Model> getContactList(){
-        ArrayList<Contact_Model> getContacts = contact_services_interface.getContactList();
+    public ArrayList<ContactModel> getContactList(){
+        ArrayList<ContactModel> getContacts = contact_services_interface.getContactList();
         return getContacts;
     }
 
     @Override
-    public Contact_Model CreateContact(Contact_Model contact_model) {
-        Contact_Model createContact = contact_services_interface.createContact(contact_model);
+    public ContactModel createContact(ContactModel contact_model) {
+        ContactModel createContact = contact_services_interface.createContact(contact_model);
         return createContact;
     }
 }

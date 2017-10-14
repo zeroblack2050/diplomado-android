@@ -3,7 +3,6 @@ package com.cosmo.arquitecturamvpbase.views.activities.adapter;
 import android.app.Activity;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,7 +10,7 @@ import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
 import com.cosmo.arquitecturamvpbase.R;
-import com.cosmo.arquitecturamvpbase.model.taller_model.Contact_Model;
+import com.cosmo.arquitecturamvpbase.model.taller_model.ContactModel;
 
 import java.util.ArrayList;
 
@@ -19,15 +18,15 @@ import java.util.ArrayList;
  * Created by leidyzulu on 16/09/17.
  */
 
-public class ContactAdapter extends ArrayAdapter<Contact_Model> {
+public class ContactAdapter extends ArrayAdapter<ContactModel> {
 
-    private ArrayList<Contact_Model> customers;
+    private ArrayList<ContactModel> customers;
     private Activity context;
-    private Contact_Model customer;
+    private ContactModel customer;
     private TextView name, username;
 
 
-    public ContactAdapter(Activity context, int resource, ArrayList<Contact_Model> customers) {
+    public ContactAdapter(Activity context, int resource, ArrayList<ContactModel> customers) {
         super(context, resource, customers);
         this.context = context;
         this.customers = customers;
@@ -44,7 +43,7 @@ public class ContactAdapter extends ArrayAdapter<Contact_Model> {
         //Log.d("getContactList", "Customer::" + customer.getName());
 //
 //        if (customers.size()>0) {
-//            for(Contact_Model test: customers){
+//            for(ContactModel test: customers){
 //                Log.d("getContactList", "Name::" + test.getName());
 //            }
 //        }

@@ -11,7 +11,7 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.cosmo.arquitecturamvpbase.R;
-import com.cosmo.arquitecturamvpbase.model.taller_model.Contact_Model;
+import com.cosmo.arquitecturamvpbase.model.taller_model.ContactModel;
 import com.cosmo.arquitecturamvpbase.model.taller_model.Locationj;
 import com.cosmo.arquitecturamvpbase.model.taller_model.PhoneList;
 import com.cosmo.arquitecturamvpbase.presenter.taller_presenter.CreateContactPresenter;
@@ -29,7 +29,7 @@ public class CreateContactActivity extends BaseActivity<CreateContactPresenter> 
     private EditText contactName, contacSurname, contactNumero, contactTipo,contactLatitud, contactAltitud;
     private Button product_btnCreate;
     private ContentLoadingProgressBar progress;
-    private Contact_Model contact_model;
+    private ContactModel contact_model;
     private PhoneList phoneList;
     private ArrayList<PhoneList> phone;
     private Locationj locationj;
@@ -74,28 +74,26 @@ public class CreateContactActivity extends BaseActivity<CreateContactPresenter> 
         product_btnCreate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                contact_model = new Contact_Model();
+                contact_model = new ContactModel();
                 phoneList = new PhoneList();
                 locationj = new Locationj();
 
-                phone = new ArrayList<>();
+                phone = new ArrayList<PhoneList>();
 
                 contact_model.setName(contactName.getText().toString());
                 contact_model.setUserName(contacSurname.getText().toString());
 
-
-
                 phoneList.setNumber(contactNumero.getText().toString());
 
-
                 locationj.setTypelocation(contactTipo.getText().toString());
-                Double[] cordinate = new Double[2];
-                cordinate[0]= Double.valueOf(contactLatitud.getText().toString());
-                cordinate[1]= Double.valueOf(contactAltitud.getText().toString());
-                locationj.setCoordinateslocation(cordinate);
+
+                Double[] test = new Double[2];
+                test[0]= Double.valueOf(contactLatitud.getText().toString());
+                test[1]= Double.valueOf(contactAltitud.getText().toString());
+                locationj.setCoordinateslocation(test);
+
                 phoneList.setLocation(locationj);
-
-
+                phone.add(phoneList);
                 contact_model.setPhoneList(phone);
                 getPresenter().createNewContact(contact_model);
             }

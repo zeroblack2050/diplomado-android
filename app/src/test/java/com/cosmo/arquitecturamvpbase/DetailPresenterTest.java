@@ -118,7 +118,7 @@ public class DetailPresenterTest {
     @Test
     public void methodDeleteProductShouldShowAlertWhenRepositoryReturnError()throws RepositoryError{
         String id = "13g1jhhd232";
-        RepositoryError repositoryError = new RepositoryError(Constants.DEFAUL_ERROR);
+        RepositoryError repositoryError = new RepositoryError(Constants.DEFAULT_ERROR);
         when(productRepository.deleteProduct(id)).thenThrow(repositoryError);
         detailProductPresenter.deleteProductRepository(id);
         verify(detailProductView).showToast(repositoryError.getMessage());

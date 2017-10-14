@@ -1,6 +1,7 @@
 package com.cosmo.arquitecturamvpbase.services.taller_services;
 
-import com.cosmo.arquitecturamvpbase.model.taller_model.Contact_Model;
+import com.cosmo.arquitecturamvpbase.model.taller_model.ContactModel;
+
 import java.util.ArrayList;
 
 import retrofit.http.Body;
@@ -14,8 +15,8 @@ import retrofit.http.POST;
 public interface Contact_Services_interface{
 
     @GET("/customers")
-    ArrayList<Contact_Model> getContactList();
+    ArrayList<ContactModel> getContactList();
 
     @POST("/customers")
-    Contact_Model createContact(@Body Contact_Model contact_model);
+    ContactModel createContact(@Body ContactModel contact_model);
 }

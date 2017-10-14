@@ -7,7 +7,7 @@ import android.widget.Toast;
 
 import com.cosmo.arquitecturamvpbase.R;
 import com.cosmo.arquitecturamvpbase.helper.Constants;
-import com.cosmo.arquitecturamvpbase.model.taller_model.Contact_Model;
+import com.cosmo.arquitecturamvpbase.model.taller_model.ContactModel;
 import com.cosmo.arquitecturamvpbase.model.taller_model.Locationj;
 import com.cosmo.arquitecturamvpbase.model.taller_model.PhoneList;
 import com.cosmo.arquitecturamvpbase.presenter.taller_presenter.DetailContactPresenter;
@@ -25,7 +25,7 @@ public class Contact_Detail extends BaseActivity<DetailContactPresenter> impleme
     private TextView contactname, contactsurname;
     private TextView phonedescription, phonenumber;
     private TextView locationtype , locationcordinate;
-    private Contact_Model contact_model;
+    private ContactModel contact_model;
     private ArrayList<PhoneList> getPhone;
     private Locationj locationj;
 
@@ -37,7 +37,7 @@ public class Contact_Detail extends BaseActivity<DetailContactPresenter> impleme
         getPresenter().inject(this, getValidateInternet());
         createProgressDialog();
         loadView();
-        contact_model = (Contact_Model) getIntent().getSerializableExtra(Constants.ITEM_CONTACT);
+        contact_model = (ContactModel) getIntent().getSerializableExtra(Constants.ITEM_CONTACT);
         setDataItem();
 
     }
@@ -51,9 +51,12 @@ public class Contact_Detail extends BaseActivity<DetailContactPresenter> impleme
 
         locationj = getPhone.get(1).getLocation();
 
+        Double[] testpersonal = new Double[2];
+        testpersonal = getPhone.get(0).getLocation().getCoordinateslocation();
 
         locationtype.setText(locationj.getTypelocation().toString());
-        locationcordinate.setText(String.valueOf(locationj.getCoordinateslocation()));
+        String loca = ""+testpersonal[0]+","+testpersonal[1];
+        locationcordinate.setText(loca);
     }
 
     private void loadView() {

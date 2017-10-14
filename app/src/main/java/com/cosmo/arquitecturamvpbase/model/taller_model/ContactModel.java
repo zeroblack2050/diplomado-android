@@ -12,7 +12,7 @@ import java.util.ArrayList;
  * Created by Superadmin1 on 03/10/2017.
  */
 
-public class Contact_Model implements Serializable{
+public class ContactModel implements Serializable{
 
     @SerializedName("name")
     @Expose

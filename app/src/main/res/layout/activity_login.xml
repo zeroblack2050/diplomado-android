@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.cosmo.arquitecturamvpbase.views.login.LoginActivity"
+    android:padding="10dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_centerVertical="true">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingTop="15dp"
+            android:paddingBottom="50dp"
+            android:text="Start Session"
+            android:textSize="55dp"
+            android:textStyle="bold"
+            android:textAlignment="center"
+            android:textColor="@color/colorPrimaryDark"
+            android:fontFamily="sans-serif-condensed"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:paddingTop="10dp"
+            android:paddingBottom="10dp">
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="0.5"
+                android:text="Email"
+                android:textSize="25dp"
+                android:textStyle="bold"
+                android:fontFamily="sans-serif-condensed"
+                android:gravity="center_vertical"
+                />
+
+            <EditText
+                android:id="@+id/textviewOneLoginActivity"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.9"
+                android:fontFamily="sans-serif-condensed"
+                android:textSize="25dp"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:paddingTop="10dp"
+            android:paddingBottom="10dp">
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="0.5"
+                android:text="Password"
+                android:textSize="25dp"
+                android:fontFamily="sans-serif-condensed"
+                android:textStyle="bold"
+                android:gravity="center_vertical"
+                />
+
+            <EditText
+                android:id="@+id/textviewTwoLoginActivity"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.9"
+                android:inputType="textPassword"
+                android:textSize="25dp"
+                android:fontFamily="sans-serif-condensed"/>
+
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/buttonLoginActivity"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="10dp"
+            android:fontFamily="sans-serif-condensed"
+            android:text="Log in"
+            android:textAllCaps="false"
+            android:textSize="25dp"
+            android:textStyle="bold"
+            android:textColor="@color/colorPrimaryDark"/>
+
+
+
+    </LinearLayout>
+
+
+</RelativeLayout>

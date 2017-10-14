@@ -1,6 +1,7 @@
 package com.cosmo.arquitecturamvpbase.repository.taller_repository;
 
-import com.cosmo.arquitecturamvpbase.model.taller_model.Contact_Model;
+import com.cosmo.arquitecturamvpbase.model.taller_model.ContactModel;
+
 import java.util.ArrayList;
 
 /**
@@ -9,8 +10,8 @@ import java.util.ArrayList;
 
 public interface ContactRepository_interface {
 
-    ArrayList<Contact_Model> getContactList();
+    ArrayList<ContactModel> getContactList();
 
-    Contact_Model CreateContact(Contact_Model contact_model);
+    ContactModel createContact(ContactModel contact_model);
 
 }

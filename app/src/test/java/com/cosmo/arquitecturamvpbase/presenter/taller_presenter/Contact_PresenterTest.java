@@ -2,10 +2,8 @@ package com.cosmo.arquitecturamvpbase.presenter.taller_presenter;
 
 import com.cosmo.arquitecturamvpbase.R;
 import com.cosmo.arquitecturamvpbase.helper.IValidateInternet;
-import com.cosmo.arquitecturamvpbase.model.taller_model.Contact_Model;
+import com.cosmo.arquitecturamvpbase.model.taller_model.ContactModel;
 import com.cosmo.arquitecturamvpbase.repository.taller_repository.ContactRepository_interface;
-import com.cosmo.arquitecturamvpbase.repository.taller_repository.Contact_Repository;
-import com.cosmo.arquitecturamvpbase.views.taller.ContactActivity;
 import com.cosmo.arquitecturamvpbase.views.taller.IContactView;
 
 import org.junit.Before;
@@ -25,7 +23,7 @@ import static org.mockito.Mockito.when;
 @RunWith(MockitoJUnitRunner.class)
 public class Contact_PresenterTest {
 
-    @Mock   private Contact_Model contact_model;
+    @Mock   private ContactModel contact_model;
     @Mock   private Contact_Presenter contact_presenter;
     @Mock   private IContactView iContactView;
     @Mock   private IValidateInternet iValidateInternet;

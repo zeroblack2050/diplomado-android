@@ -1,9 +1,6 @@
 package com.cosmo.arquitecturamvpbase.presenter.taller_presenter;
 
-import android.util.Log;
-
-import com.cosmo.arquitecturamvpbase.R;
-import com.cosmo.arquitecturamvpbase.model.taller_model.Contact_Model;
+import com.cosmo.arquitecturamvpbase.model.taller_model.ContactModel;
 import com.cosmo.arquitecturamvpbase.presenter.BasePresenter;
 import com.cosmo.arquitecturamvpbase.repository.taller_repository.ContactRepository_interface;
 import com.cosmo.arquitecturamvpbase.repository.taller_repository.Contact_Repository;
@@ -50,7 +47,7 @@ public class Contact_Presenter extends BasePresenter<IContactView> {
 
         try {
             //Log.e("Error","Entro aqui");
-            ArrayList<Contact_Model> customers = contact_repository.getContactList();
+            ArrayList<ContactModel> customers = contact_repository.getContactList();
             getView().showContactList(customers);
 
         } catch (RetrofitError retrofitError) {

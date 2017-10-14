@@ -13,7 +13,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".views.taller.ContactActivity">
+        <activity android:name=".views.login.LoginActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -23,12 +23,15 @@
         <activity android:name=".views.activities.DetailActivity" />
         <activity android:name=".views.activities.CreateProductActivity" />
         <activity android:name=".views.activities.UpdateProductActivity" />
-        <!--<activity android:name=".views.taller.ContactActivity">-->
-        <activity android:name=".views.activities.ProductActivity"/>
-        <activity android:name=".views.taller.CreateContactActivity"/>
-        <activity android:name=".views.taller.Contact_Detail">
-        </activity>
+        <!-- <activity android:name=".views.taller.ContactActivity"> -->
+        <activity android:name=".views.activities.ProductActivity" />
+        <activity android:name=".views.taller.CreateContactActivity" />
+        <activity android:name=".views.taller.ContactActivity" />
+        <activity android:name=".views.taller.Contact_Detail" />
+        <activity android:name=".views.activities.DashBoardActivity">
+        <!-- <activity android:name=".views.activities.DashBoardActivity"></activity> -->
 
+        </activity>
     </application>
 
 </manifest>

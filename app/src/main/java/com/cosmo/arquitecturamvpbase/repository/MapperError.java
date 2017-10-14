@@ -36,7 +36,7 @@ public class MapperError {
         Response response = retrofitError.getResponse();
         if (response != null) {
             int errorId = response.getStatus();
-            String mensaje = Constants.DEFAUL_ERROR;
+            String mensaje = Constants.DEFAULT_ERROR;
             if (errorId == Constants.UNAUTHORIZED_ERROR_CODE || errorId == Constants.NOT_FOUND_ERROR_CODE) {
                /* try {
                     ErrorDTO errorDTO = (ErrorDTO) retrofitError.getBodyAs(ErrorDTO.class);
@@ -57,15 +57,15 @@ public class MapperError {
         if (retrofitError.getCause() != null && retrofitError.getCause() instanceof SocketTimeoutException
                 || retrofitError.getCause() instanceof InterruptedIOException) {
             RepositoryError repositoryError = new RepositoryError(Constants.REQUEST_TIMEOUT_ERROR_MESSAGE);
-            repositoryError.setIdError(Constants.DEFAUL_ERROR_CODE);
+            repositoryError.setIdError(Constants.DEFAULT_ERROR_CODE);
             return repositoryError;
         }
         return null;
     }
 
     public static RepositoryError getDefaulError() {
-        RepositoryError repositoryError = new RepositoryError(Constants.DEFAUL_ERROR);
-        repositoryError.setIdError(Constants.DEFAUL_ERROR_CODE);
+        RepositoryError repositoryError = new RepositoryError(Constants.DEFAULT_ERROR);
+        repositoryError.setIdError(Constants.DEFAULT_ERROR_CODE);
         return repositoryError;
     }
 }
