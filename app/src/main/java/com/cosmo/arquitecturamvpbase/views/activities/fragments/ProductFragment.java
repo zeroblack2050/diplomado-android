@@ -46,6 +46,7 @@ public class ProductFragment extends BaseFragment<ProductPresenter> implements I
         setPresenter(new ProductPresenter());
         getPresenter().inject(this, getValidateInternet());
         productList = (ListView) view.findViewById(R.id.product_listView);
+        productList.setNestedScrollingEnabled(true);
         //progress = (ContentLoadingProgressBar) view.findViewById(R.id.progress);
         //progress.show();
         getPresenter().getListProduct();

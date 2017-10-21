@@ -22,4 +22,7 @@ public class Constants {
     public static final String TITLE_CONTACT = "Contacts";
     public static final String TITLE_DEFAULT = "Empty";
 
+    public static final String PREFERENCES = "preferences";
+    public static final String USER = "user";
+    public static final String EMPTY = "empty";
 }

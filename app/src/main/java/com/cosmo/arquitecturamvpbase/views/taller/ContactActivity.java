@@ -15,6 +15,7 @@ import com.cosmo.arquitecturamvpbase.helper.Constants;
 import com.cosmo.arquitecturamvpbase.model.taller_model.ContactModel;
 import com.cosmo.arquitecturamvpbase.presenter.taller_presenter.Contact_Presenter;
 import com.cosmo.arquitecturamvpbase.views.BaseActivity;
+import com.cosmo.arquitecturamvpbase.views.Maps.MapsActivity;
 import com.cosmo.arquitecturamvpbase.views.activities.adapter.ContactAdapter;
 
 import java.util.ArrayList;
@@ -25,6 +26,7 @@ public class ContactActivity extends BaseActivity<Contact_Presenter> implements 
     private ContactAdapter contactAdapter;
     private ContentLoadingProgressBar progress;
     private FloatingActionButton buttonLaunchCreate;
+    private MapsActivity mapsActivity;
 
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -36,7 +38,7 @@ public class ContactActivity extends BaseActivity<Contact_Presenter> implements 
         //progress = (ContentLoadingProgressBar) findViewById(R.id.progress);
         //progress.show();
         getPresenter().PresConsultContact();
-        loadEvents();
+        //loadEvents();
         //UpdateProduct();
     }
 
@@ -46,7 +48,18 @@ public class ContactActivity extends BaseActivity<Contact_Presenter> implements 
         getPresenter().PresConsultContact();
     }
 
-    private void loadEvents() {
+
+    public void showInMap(){
+
+
+
+        //mapsActivity.calculateRouteList();
+    }
+
+
+
+
+    /*private void loadEvents() {
         buttonLaunchCreate = (FloatingActionButton) findViewById(R.id.createContact);
         buttonLaunchCreate.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -55,7 +68,7 @@ public class ContactActivity extends BaseActivity<Contact_Presenter> implements 
                 startActivity(intent);
             }
         });
-    }
+    }*/
 
     @Override
     protected void onResume() {
@@ -112,7 +125,7 @@ public class ContactActivity extends BaseActivity<Contact_Presenter> implements 
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
-                Intent intent = new Intent(ContactActivity.this, Contact_Detail.class);
+                Intent intent = new Intent(ContactActivity.this, MapsActivity.class);
                 intent.putExtra(Constants.ITEM_CONTACT,customers.get(position));
                 startActivity(intent);
                 //Toast.makeText(ContactActivity.this,"Pendiente por hacer",Toast.LENGTH_SHORT).show();
