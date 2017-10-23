@@ -5,6 +5,7 @@ import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.drawable.Drawable;
+import android.support.annotation.ColorInt;
 import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
 import android.support.v4.content.ContextCompat;
@@ -23,6 +24,7 @@ import com.directions.route.Routing;
 import com.directions.route.RoutingListener;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.GoogleApiAvailability;
+import com.google.android.gms.maps.CameraUpdate;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
@@ -31,6 +33,7 @@ import com.google.android.gms.maps.UiSettings;
 import com.google.android.gms.maps.model.BitmapDescriptor;
 import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.LatLngBounds;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.maps.model.Polyline;
 import com.google.android.gms.maps.model.PolylineOptions;
@@ -41,10 +44,13 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
     private GoogleMap mMap;
     private String TAG = "MapsActivity";
+
+
     ContactModel client= new ContactModel();
-    private ArrayList<PhoneList> getPhone;
+    private ArrayList<PhoneList> getPhoneList;
     private Locationj locationj;
     Double[] arrayRoutes;
+    ArrayList<LatLng> routeList = new ArrayList<>();
 
 
     private String contactname, contactsurname;
@@ -63,9 +69,23 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
             mapFragment.getMapAsync(this);
         }
 
+        getClient();
+
 
 
     }
+
+    private void getClient() {
+
+        client = (ContactModel) getIntent().getSerializableExtra(Constants.ITEM_CONTACT);
+        getPhoneList = client.getPhoneList();
+        locationj = getPhoneList.get(0).getLocation();
+        arrayRoutes = locationj.getCoordinateslocation();
+        //int a = 0;
+        //"Pos: "+arrayRoutes[a]+" \npos "+arrayRoutes[a+1]
+        //Toast.makeText(this, "Pos: "+arrayRoutes[a]+" \npos "+arrayRoutes[a+1], Toast.LENGTH_LONG).show();
+    }
+
     private boolean checkPlayServices(){
 
         GoogleApiAvailability googleAPI = GoogleApiAvailability.getInstance();
@@ -104,67 +124,72 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     }
 
     private void createMarkers() {
-        /*// Add a marker in Sydney and move the camera
-        LatLng myHome = new LatLng(6.295541547310109, -75.5470822694702);
+        // Add a marker in Sydney and move the camera
+        /*LatLng myHome = new LatLng(6.295541547310109, -75.5470822694702);
         mMap.addMarker(new MarkerOptions().position(myHome).title("Marker in home").
                 icon(bitPapDescriptorFromVector(this,R.drawable.locationicon)));
 
         // Add a marker in Sydney and move the camera
         LatLng myOffice = new LatLng(6.2501477, -75.5694747);
         mMap.addMarker(new MarkerOptions().position(myOffice).title("Marker in office").
-                icon(bitPapDescriptorFromVector(this,R.drawable.locationicon)));
-
-        LatLng myOffice = new LatLng(6.2501477, -75.5694747);
-        mMap.addMarker(new MarkerOptions().position(myOffice).title("Marker in office").
-                icon(bitPapDescriptorFromVector(this,R.drawable.locationicon)));
+                icon(bitPapDescriptorFromVector(this,R.drawable.locationicon)));*/
 
         //mMap.moveCamera(CameraUpdateFactory.newLatLng(myOffice));}
-        mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(myHome,12));
 
-        Polyline polyline = mMap.addPolyline(new PolylineOptions()
-                .add(myHome)
+        StringBuffer a = new StringBuffer("");
+
+
+        for (int i=0; i<getPhoneList.size();i++){
+            //a.append("Pos"+i+" "+getPhoneList.get(i).getLocation().getCoordinateslocation()[0].toString());
+            //a.append("Pos"+i+" "+getPhoneList.get(i).getLocation().getCoordinateslocation()[1].toString()+"\n");
+
+            routeList.add(new LatLng(
+                    getPhoneList.get(i).getLocation().getCoordinateslocation()[0],
+                    getPhoneList.get(i).getLocation().getCoordinateslocation()[1]));
+
+            mMap.addMarker(new MarkerOptions().position(new LatLng(
+                    getPhoneList.get(i).getLocation().getCoordinateslocation()[0],
+                    getPhoneList.get(i).getLocation().getCoordinateslocation()[1]))
+                    .title(client.getName().toString())
+
+                    .icon(bitPapDescriptorFromVector(this,R.drawable.locationicon)));
+
+            a.append("lat "+routeList.get(i).latitude);
+            a.append("long "+routeList.get(i).longitude+"\n");
+
+        }
+        //Toast.makeText(this, a.toString(), Toast.LENGTH_LONG).show();
+
+        //mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(myHome,12));
+
+        /*Polyline polyline = mMap.addPolyline(new PolylineOptions()
+                //.add(myHome)
                 .width(4)
                 .color(Color.BLUE)
         );*/
 
-        LatLng myOffice = new LatLng(6.2501477, -75.5694747);
-        mMap.addMarker(new MarkerOptions().position().title("Marker in office").
-                icon(bitPapDescriptorFromVector(this,R.drawable.locationicon)));
-
-        setDataItem();
         //calculateRoute(myHome,myOffice);
-        calculateRouteList(getArrayList());
+        //Create method calculate route
+        calculateRouteList(routeList);
     }
 
-    private ArrayList<LatLng> getArrayList() {
-        ArrayList<LatLng> listRoutes = new ArrayList<>();
 
-        client = (ContactModel) getIntent().getSerializableExtra(Constants.ITEM_CONTACT);
-        LatLng coordi;
-        for (int i = 0; i < arrayRoutes.length; i++){
 
-            listRoutes.add(new LatLng(arrayRoutes[i], arrayRoutes[i+1]));
+    public int colorSelector(int sw){
+        switch (sw){
+            case 0:
+                return R.color.colorAccent;
+            case 1:
+                return R.color.colorBlack;
+            case 2:
+                return R.color.colorPrimaryDark;
+            default:
+                return R.color.colorGray;
         }
-
-
-        return listRoutes;
     }
 
-    private void setDataItem() {
-
-        contactname =client.getName();
-        contactsurname = client.getUserName();
-        getPhone = client.getPhoneList();
-        phonenumber = getPhone.get(0).getNumber().toString();
-
-        locationj = getPhone.get(1).getLocation();
 
 
-        locationtype = locationj.getTypelocation().toString();
-        arrayRoutes = getPhone.get(0).getLocation().getCoordinateslocation();
-
-
-    }
 
 
     RoutingListener routingListener = new RoutingListener() {
@@ -181,9 +206,11 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         @Override
         public void onRoutingSuccess(ArrayList<Route> routes, int shortestRouteIndex) {
             ArrayList polyLines = new ArrayList<>();
+
+
             for (int i = 0; i < routes.size(); i++){
                 PolylineOptions polyLineOptions = new PolylineOptions();
-                polyLineOptions.color(ContextCompat.getColor(getApplicationContext(),R.color.colorAccent));
+                polyLineOptions.color(ContextCompat.getColor(getApplicationContext(),colorSelector(i)));
                 polyLineOptions.width(10);
                 polyLineOptions.addAll(routes.get(i).getPoints());
 
@@ -193,7 +220,18 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                 int distance = routes.get(i).getDistanceValue();
                 int duration = routes.get(i).getDurationValue();
 
-                Toast.makeText(MapsActivity.this, "Distance: "+distance+" \nDuration: "+duration, Toast.LENGTH_LONG).show();
+                /*Polyline polyline = mMap.addPolyline(new PolylineOptions()
+                .add(myHome)
+                .width(4)
+                .color(Color.BLUE)
+        );*/
+
+
+
+
+
+
+                //Toast.makeText(MapsActivity.this, "Distance: "+distance+" \nDuration: "+duration, Toast.LENGTH_LONG).show();
 
             }
         }
@@ -221,11 +259,9 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         routing.execute();
     }
 
+
+
     public void calculateRouteList(ArrayList<LatLng> arrayRoutes) {
-        //ArrayList<LatLng> points= new ArrayList<>();
-
-
-
 
         Routing routing = new Routing.Builder()
                 .alternativeRoutes(true)
@@ -236,6 +272,20 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                 .withListener(routingListener)
                 .build();
         routing.execute();
+        centerRoutes(arrayRoutes);
+    }
+
+    public void centerRoutes(ArrayList<LatLng> points){
+        LatLngBounds.Builder builder = new LatLngBounds.Builder();
+        for(LatLng latLng : points){
+            builder.include(latLng);
+        }
+        LatLngBounds bounds = builder.build();
+
+        int width = getResources().getDisplayMetrics().widthPixels;
+        int height = getResources().getDisplayMetrics().heightPixels;
+        int padding = (int) (width * 0.12); // offset from edges of the map 12% of screen
+        mMap.animateCamera((CameraUpdateFactory.newLatLngBounds(bounds, width, height, padding)));
     }
 
 
