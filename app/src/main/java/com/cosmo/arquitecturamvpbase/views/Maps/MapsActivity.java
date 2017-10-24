@@ -150,8 +150,8 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
             mMap.addMarker(new MarkerOptions().position(new LatLng(
                     getPhoneList.get(i).getLocation().getCoordinateslocation()[0],
                     getPhoneList.get(i).getLocation().getCoordinateslocation()[1]))
-                    .title(client.getName().toString())
-
+                    .title(client.getName().toString()+"\n")
+                    .snippet(getPhoneList.get(i).getNumber().toString())
                     .icon(bitPapDescriptorFromVector(this,R.drawable.locationicon)));
 
             a.append("lat "+routeList.get(i).latitude);
@@ -169,7 +169,9 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         );*/
 
         //calculateRoute(myHome,myOffice);
-        //Create method calculate route
+
+
+        //method to calculate routes on webservice
         calculateRouteList(routeList);
     }
 
